@@ -6,7 +6,7 @@ if (localStorage.getItem('authToken')) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'http://localhost:5000/api';
+    const API_URL = 'anommsgbackend-anonmsgback.up.railway.app';
     const formTitle = document.getElementById('form-title');
     const usernameGroup = document.getElementById('username-group');
     const submitBtn = document.getElementById('submit-btn');
