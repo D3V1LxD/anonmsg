@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send a Message - AnonMsg</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.3.2/jsencrypt.min.js"></script>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-container">
+            <div class="auth-box profile-message-box">
+                <div class="logo-auth">Anon<span>Msg</span></div>
+                <h2>Send an Anonymous Message to <span id="profile-username" class="highlight-username">Username</span></h2>
+                <p>Your identity will remain completely anonymous.</p>
+                <form id="message-form">
+                    <div class="input-group"><label for="anonymous-message">Your Message:</label><textarea id="anonymous-message" rows="6" placeholder="Write your secret message here... be nice! 😊" required></textarea></div>
+                    <p id="message-feedback" class="feedback-text"></p>
+                    <button type="submit" class="btn btn-primary btn-full" id="send-btn" disabled>Loading...</button>
+                </form>
+                 <p class="toggle-auth">Want to receive anonymous messages too? <a href="index.html">Create your own AnonMsg profile</a>.</p>
+            </div>
+            <a href="index.html" class="back-to-home">&larr; Back to Home</a>
+        </div>
+    </div>
+    <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AnonMsg</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.3.2/jsencrypt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Anon<span>Msg</span></div>
+            <nav><button id="logout-btn" class="btn btn-danger">Logout</button></nav>
+        </div>
+    </header>
+    <main class="container dashboard">
+        <div class="dashboard-header">
+            <h2>Welcome, <span id="username-display">User</span>!</h2>
+            <p>This is your private space to view anonymous messages sent to you.</p>
+        </div>
+        <div class="profile-link-container card">
+            <h3>Your Anonymous Profile Link</h3>
+            <p>Share this link for others to send you messages:</p>
+            <div class="link-box">
+                <input type="text" id="profile-link" value="https://anonmsg.com/p/yourusername" readonly>
+                <button id="copy-btn" class="btn btn-secondary">Copy Link</button>
+            </div>
+            <small id="copy-feedback" class="copy-feedback-text"></small>
+        </div>
+        <div class="messages-container">
+            <h3>Received Messages</h3>
+            <div id="message-list">
+                </div>
+        </div>
+        <div class="account-settings-card card">
+            <h3>Account Settings</h3>
+            <p>Warning: Terminating your account will permanently delete all your data, including your profile and all received messages. This action cannot be undone.</p>
+            <button id="terminate-account-btn" class="btn btn-danger btn-full-width-danger">Terminate My Account</button>
+        </div>
+       </main>
+    <footer class="container"><p>&copy; <span id="current-year-dashboard"></span> AnonMsg. All Rights Reserved.</p></footer>
+    <script>document.getElementById("current-year-dashboard").textContent=new Date().getFullYear();</script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

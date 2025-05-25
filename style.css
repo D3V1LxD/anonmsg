@@ -1,0 +1,264 @@
+/* --- Global Styles & Variables --- */
+:root{--primary-color:#6a11cb;--primary-color-darker:#500ca1;--secondary-color:#2575fc;--accent-color:#ff6f91;--text-color:#333;--light-text-color:#f8f9fa;--bg-color:#f4f6f8;--card-bg-color:#fff;--border-color:#e0e0e0;--success-color:#28a745;--danger-color:#dc3545;--shadow:0 4px 15px rgba(0,0,0,.1);--border-radius:8px;--font-family:'Poppins',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-family);line-height:1.7;color:var(--text-color);background-color:var(--bg-color);transition:background-color .3s ease}
+.container{max-width:1100px;margin:auto;padding:0 1.5rem}
+h1,h2,h3{margin-bottom:1rem;font-weight:600;line-height:1.3}
+h1{font-size:2.8rem;color:var(--primary-color)}h2{font-size:2.2rem}h3{font-size:1.5rem}
+p{margin-bottom:1rem;color:#555}
+a{text-decoration:none;color:var(--secondary-color);transition:color .3s ease}
+a:hover{color:var(--primary-color)}
+header{background:linear-gradient(90deg,var(--primary-color),var(--secondary-color));color:var(--light-text-color);padding:1rem 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+header .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.8rem;font-weight:700;letter-spacing:1px}
+.logo span{color:var(--accent-color);font-weight:400}
+.logo-auth{text-align:center;font-size:2rem;font-weight:700;margin-bottom:1.5rem;color:var(--primary-color)}
+.logo-auth span{color:var(--secondary-color);font-weight:400}
+.btn{display:inline-block;padding:.8rem 1.8rem;border:none;border-radius:var(--border-radius);cursor:pointer;font-weight:600;font-size:1rem;text-align:center;transition:all .3s ease;box-shadow:0 2px 5px rgba(0,0,0,.1)}
+.btn-primary{background:linear-gradient(45deg,var(--accent-color),var(--primary-color));color:var(--light-text-color)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(var(--accent-color),.4)}
+.btn-secondary{background-color:var(--secondary-color);color:var(--light-text-color)}
+.btn-secondary:hover{background-color:#1e63d3;transform:translateY(-2px)}
+.btn-outline{background-color:transparent;color:var(--light-text-color);border:2px solid var(--light-text-color)}
+.btn-outline:hover{background-color:var(--light-text-color);color:var(--primary-color)}
+.btn-danger{background-color:var(--danger-color);color:var(--light-text-color)}
+.btn-danger:hover{background-color:#c82333;transform:translateY(-2px)}
+.btn-full{width:100%}.btn-lg{padding:1rem 2.5rem;font-size:1.1rem}
+.pulse{animation:pulse-animation 2s infinite}@keyframes pulse-animation{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.hero{background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);color:var(--light-text-color);padding:5rem 0;text-align:center;min-height:70vh;display:flex;align-items:center;justify-content:center}
+.hero h1{font-size:3.5rem;margin-bottom:1rem;color:var(--light-text-color)}
+.hero h1 span{display:block;color:var(--accent-color);text-shadow:1px 1px 3px rgba(0,0,0,.2)}
+.hero p{font-size:1.2rem;max-width:700px;margin:0 auto 2rem;color:rgba(255,255,255,.9)}
+.features{padding:4rem 0;text-align:center}
+.features h2{margin-bottom:3rem;color:var(--primary-color)}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.feature-item{background:var(--card-bg-color);padding:2rem;border-radius:var(--border-radius);box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease}
+.feature-item:hover{transform:translateY(-10px);box-shadow:0 10px 20px rgba(0,0,0,.15)}
+.feature-icon{font-size:3rem;margin-bottom:1rem;color:var(--secondary-color)}
+.auth-wrapper{display:flex;justify-content:center;align-items:center;min-height:100vh;padding:2rem 1rem;background:linear-gradient(120deg,var(--bg-color) 0%,#e0c3fc 100%)}
+.auth-container{width:100%;max-width:450px}
+.auth-box{background:var(--card-bg-color);padding:2.5rem;border-radius:var(--border-radius);box-shadow:var(--shadow);animation:fadeIn .5s ease-out}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.input-group{margin-bottom:1.5rem}
+.input-group label{display:block;margin-bottom:.5rem;font-weight:600;color:#555}
+.input-group input,.input-group textarea{width:100%;padding:.9rem;border:1px solid var(--border-color);border-radius:var(--border-radius);font-size:1rem;transition:border-color .3s ease,box-shadow .3s ease}
+.input-group input:focus,.input-group textarea:focus{outline:none;border-color:var(--primary-color);box-shadow:0 0 0 3px rgba(106,17,203,.2)}
+.input-group small{color:#777;font-size:.85rem;margin-top:.3rem;display:block}
+.input-group textarea{resize:vertical;min-height:120px}
+.toggle-auth{margin-top:1.5rem;text-align:center;font-size:.95rem}
+.toggle-auth a{font-weight:600}
+.error-text,.feedback-text{color:var(--danger-color);margin-bottom:1rem;text-align:center;font-weight:500;min-height:1.2em}
+.feedback-text.success{color:var(--success-color)}
+.back-to-home{display:block;text-align:center;margin-top:1.5rem;color:var(--primary-color);font-weight:500}
+.back-to-home:hover{text-decoration:underline}
+.dashboard{padding-top:2rem;padding-bottom:2rem}
+.dashboard-header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border-color)}
+.dashboard-header h2{color:var(--primary-color)}
+.dashboard-header span{color:var(--secondary-color);font-weight:700}
+.card{background:var(--card-bg-color);padding:2rem;margin-bottom:2rem;border-radius:var(--border-radius);box-shadow:var(--shadow)}
+.profile-link-container h3{margin-bottom:.5rem}
+.profile-link-container p{font-size:.95rem;color:#666;margin-bottom:1rem}
+.link-box{display:flex;margin-bottom:.5rem}
+.link-box input{flex-grow:1;padding:.8rem;border:1px solid var(--border-color);border-radius:var(--border-radius) 0 0 var(--border-radius);background:var(--bg-color);font-size:1rem;color:var(--text-color)}
+.link-box button{border-radius:0 var(--border-radius) var(--border-radius) 0}
+.copy-feedback-text{display:block;font-size:.9rem;color:var(--success-color);min-height:1em;margin-top:.5rem}
+.messages-container h3{margin-bottom:1.5rem}
+.message-card{background:var(--card-bg-color);border:1px solid var(--border-color);padding:1.5rem;margin-bottom:1.5rem;border-radius:var(--border-radius);box-shadow:0 2px 8px rgba(0,0,0,.07);transition:transform .3s ease,box-shadow .3s ease}
+.message-card:hover{transform:translateY(-5px);box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.message-card.no-messages{text-align:center;color:#777;padding:2rem;font-size:1.1rem;border-style:dashed}
+.message-content{font-size:1.05rem;margin-bottom:.75rem;color:#444}
+.message-date{font-size:.85rem;color:#888;display:block;text-align:right}
+.profile-message-box h2{font-size:1.8rem;margin-bottom:.5rem}
+.profile-message-box>p{font-size:1rem;color:#666;margin-bottom:1.5rem;text-align:center}
+.highlight-username{color:var(--accent-color);font-weight:700}
+.message-card-actions{display:flex;justify-content:flex-end;gap:.75rem;margin-top:1rem;padding-top:1rem;border-top:1px solid #f0f0f0}
+.action-btn{padding:.4rem .8rem;font-size:.85rem;font-weight:600;border:none;border-radius:5px;cursor:pointer;transition:all .2s ease}
+.btn-reply{background-color:#e8f5ff;color:#007bff}
+.btn-reply:hover{background-color:#cce7ff}
+.btn-delete{background-color:#ffeeee;color:var(--danger-color)}
+.btn-delete:hover{background-color:#ffdddd}
+footer{text-align:center;padding:2rem 0;margin-top:2rem;color:#777;font-size:.9rem;border-top:1px solid var(--border-color)}
+@media (max-width:768px){.hero h1{font-size:2.8rem}.hero p{font-size:1.1rem}.feature-grid{grid-template-columns:1fr}.auth-box{padding:2rem}h1{font-size:2.2rem}h2{font-size:1.8rem}}
+@media (max-width:480px){.hero h1{font-size:2.2rem}.hero p{font-size:1rem}.btn{padding:.7rem 1.2rem;font-size:.9rem}.btn-lg{padding:.8rem 1.5rem;font-size:1rem}header .container{flex-direction:column;gap:.5rem}.logo{font-size:1.5rem}.auth-box{padding:1.5rem}.input-group input,.input-group textarea{padding:.8rem}}
+/* --- ADD THESE NEW STYLES AT THE BOTTOM OF YOUR EXISTING style.css --- */
+
+/* --- New styles for Flippable Message Cards --- */
+.message-card {
+    perspective: 1000px; /* Adds depth for the 3D effect */
+    background-color: transparent; /* The outer card is now just a container for the flipper */
+    border: none; /* Remove border from the container if any */
+    box-shadow: none; /* Remove shadow from the container if any */
+    /* Ensure the message-card itself doesn't interfere with flipper clicks by default */
+    cursor: default;
+}
+
+.message-flipper {
+    position: relative;
+    width: 100%;
+    min-height: 120px; /* Adjust as needed, ensures front face has some height */
+    transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1); /* Smoother animation */
+    transform-style: preserve-3d;
+    cursor: pointer;
+    border-radius: var(--border-radius); /* Apply border radius here */
+    box-shadow: var(--shadow); /* Apply shadow here */
+}
+
+/* This class is added by JavaScript to trigger the flip */
+.message-card.is-flipped .message-flipper {
+    transform: rotateY(180deg);
+}
+
+.message-front, .message-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: var(--border-radius); /* Ensure faces have rounded corners */
+    box-sizing: border-box; /* Important for padding */
+}
+
+.message-front {
+    background: linear-gradient(135deg, #6DD5FA, #2980B9); /* Example blue gradient */
+    color: white;
+    text-align: center;
+}
+.message-front p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: white; /* Ensure text color contrasts with background */
+}
+.message-front span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+.message-back {
+    background-color: var(--card-bg-color); /* Use original card background */
+    color: var(--text-color);
+    transform: rotateY(180deg); /* Initially hide the back face */
+    align-items: flex-start; /* Align content normally for the back */
+    justify-content: space-between; /* Space out content and actions */
+}
+
+/* Ensure message content in the back is styled correctly */
+.message-back .message-content {
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+    color: #444;
+    width: 100%; /* Take full width */
+    align-self: flex-start; /* Align this item to start */
+}
+
+.message-back .message-date {
+    font-size: 0.85rem;
+    color: #888;
+    display: block;
+    text-align: right;
+    width: 100%; /* Take full width */
+    align-self: flex-end; /* Align this item to end */
+}
+.message-back .message-card-actions {
+    width: 100%; /* Make actions take full width */
+    align-self: flex-end; /* Align this item to end */
+}
+/* --- ADD THESE STYLES AT THE BOTTOM --- */
+
+/* Footer Links styling */
+.footer-links {
+    margin-top: 1rem; /* Add some space above the link */
+    text-align: center; /* Center the link if it's the only one */
+}
+
+.btn-footer-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary-color); /* Or choose another color */
+    color: var(--light-text-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-footer-link:hover {
+    background-color: var(--primary-color); /* Darken on hover */
+    color: var(--light-text-color);
+}
+/* --- ADD THESE STYLES AT THE BOTTOM --- */
+
+.account-settings-card {
+    margin-top: 3rem; /* More space from messages */
+    padding: 2rem;
+    border-top: 3px solid var(--danger-color); /* More prominent danger indication */
+    background-color: #fff3f3; /* Slight red tint background */
+}
+
+.account-settings-card h3 {
+    color: var(--danger-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.account-settings-card p {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: #555;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.btn-full-width-danger {
+    width: 100%;
+    display: block;
+    padding: 0.8rem 1.5rem; /* Consistent padding */
+    font-size: 1rem; /* Consistent font size */
+    /* It will inherit btn-danger styles, this class is mainly for width if needed */
+}
+/* Existing styles ... */
+
+header nav {
+    display: flex; /* Ensures buttons are in a row */
+    align-items: center; /* Aligns buttons vertically */
+    gap: 1rem; /* Adds space between the buttons */
+}
+
+/* ... Rest of your styles ... */
+/* --- ADD THESE STYLES AT THE BOTTOM --- */
+
+.terms-agreement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Consistent with other input groups */
+    font-size: 0.9rem;
+    color: #555; /* Match paragraph text color */
+}
+
+.terms-agreement input[type="checkbox"] {
+    margin-right: 0.75rem; /* Space between checkbox and label */
+    width: 16px;  /* Custom size for checkbox */
+    height: 16px;
+    accent-color: var(--primary-color); /* Modern way to color the checkmark */
+    cursor: pointer;
+}
+
+.terms-agreement label {
+    margin-bottom: 0; /* Override default label margin from .input-group if any */
+    font-weight: normal; /* Make it normal weight */
+}
+
+.terms-agreement label a {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.terms-agreement label a:hover {
+    color: var(--primary-color);
+}

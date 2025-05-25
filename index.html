@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnonMsg - Anonymous Messaging</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style> /* Simple particle effect for hero section */ .hero{position:relative;overflow:hidden}.particle{position:absolute;background-color:rgba(255,255,255,.15);border-radius:50%;opacity:0;animation:float 15s infinite ease-in-out}@keyframes float{0%{transform:translateY(20vh) translateX(0) scale(.5);opacity:0}25%{opacity:1}50%{transform:translateY(-20vh) translateX(5vw) scale(1)}75%{opacity:1}100%{transform:translateY(20vh) translateX(-5vw) scale(.5);opacity:0}} </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Anon<span>Msg</span></div>
+            <nav>
+                <a href="auth.html" class="btn btn-outline">Sign In / Sign Up</a>
+                <a href="privacy.html" class="btn btn-outline">Privacy & Policy</a>
+            </nav>
+        </div>
+    </header>
+    <main class="hero">
+        <div class="container">
+            <h1>Receive Secret Messages <span>Anonymously</span></h1>
+            <p>Share your unique profile link and let friends, colleagues, or anyone send you anonymous messages. No logins required for senders!</p>
+            <a href="auth.html" class="btn btn-primary btn-lg pulse">Get Your Anonymous Link</a>
+        </div>
+    </main>
+    <section class="features container">
+        <h2>How It Works</h2>
+        <div class="feature-grid">
+            <div class="feature-item"><div class="feature-icon">✉️</div><h3>1. Get Your Link</h3><p>Sign up in seconds to get your personal anonymous message link.</p></div>
+            <div class="feature-item"><div class="feature-icon">🔗</div><h3>2. Share It Anywhere</h3><p>Post your link on social media, your blog, or share it directly.</p></div>
+            <div class="feature-item"><div class="feature-icon">💬</div><h3>3. Read Messages</h3><p>View all your anonymous messages in your private dashboard.</p></div>
+        </div>
+    </section>
+
+    <footer class="container">
+        <p>&copy; <span id="current-year"></span> AnonMsg. All Rights Reserved.</p>
+        </footer>
+    <script>document.getElementById("current-year").textContent=new Date().getFullYear();const hero=document.querySelector(".hero");if(hero){for(let e=0;e<15;e++){let t=document.createElement("div");t.classList.add("particle"),t.style.width=`${Math.random()*10+5}px`,t.style.height=t.style.width,t.style.left=`${Math.random()*100}vw`,t.style.top=`${Math.random()*100}vh`,t.style.animationDelay=`${Math.random()*10}s`,t.style.animationDuration=`${Math.random()*10+10}s`,hero.appendChild(t)}}</script>
+</body>
+</html>
