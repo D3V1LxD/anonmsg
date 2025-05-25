@@ -1,7 +1,7 @@
 // profile.js (Final Corrected Version - Fix for stuck button)
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'http://localhost:5000/api';
+    const API_URL = 'anommsgbackend-anonmsgback.up.railway.app';
     const profileUsernameSpan = document.getElementById('profile-username');
     const messageForm = document.getElementById('message-form');
     const messageFeedback = document.getElementById('message-feedback');
