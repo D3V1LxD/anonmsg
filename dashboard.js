@@ -13,7 +13,7 @@ if (!authToken || !username || !privateKey) {
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Dashboard DOM Loaded. Initializing for user:", username);
 
-    const API_URL = 'http://localhost:5000/api';
+    const API_URL = 'anommsgbackend-anonmsgback.up.railway.app';
     const usernameDisplay = document.getElementById('username-display');
     const profileLinkInput = document.getElementById('profile-link');
     const copyBtn = document.getElementById('copy-btn');
