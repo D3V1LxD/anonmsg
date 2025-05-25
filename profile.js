@@ -1,7 +1,10 @@
-// profile.js (Final Corrected Version - Fix for stuck button)
+// profile.js (Corrected API_URL)
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'anommsgbackend-anonmsgback.up.railway.app';
+    // *** THIS IS THE CORRECTED LINE ***
+    const API_URL = 'https://anommsgbackend-anonmsgback.up.railway.app/api';
+    // Ensure '/api' is at the end if your backend routes are prefixed with /api
+
     const profileUsernameSpan = document.getElementById('profile-username');
     const messageForm = document.getElementById('message-form');
     const messageFeedback = document.getElementById('message-feedback');
@@ -71,8 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Encryption failed. Message may be too long.');
             }
 
-            // --- THIS IS THE CORRECTED LINE ---
-            // It now correctly uses the 'username' variable from the top of the file.
             const response = await fetch(`${API_URL}/messages/${username}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const data = await response.json();
-            if (!response.ok) throw new Error(data.error);
+            if (!response.ok) throw new Error(data.error || "Failed to send message.");
             
             messageFeedback.textContent = 'Your anonymous message has been sent successfully!';
             messageFeedback.className = 'feedback-text success';
