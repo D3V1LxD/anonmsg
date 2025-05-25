@@ -1,4 +1,4 @@
-// auth.js (With Terms Agreement Logic)
+// auth.js (Corrected API_URL)
 
 // If the user is already logged in, redirect them to the dashboard immediately
 if (localStorage.getItem('authToken')) {
@@ -6,7 +6,10 @@ if (localStorage.getItem('authToken')) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'anommsgbackend-anonmsgback.up.railway.app';
+    // *** THIS IS THE CORRECTED LINE ***
+    const API_URL = 'https://anommsgbackend-anonmsgback.up.railway.app/api'; 
+    // Ensure '/api' is at the end if your backend routes are prefixed with /api
+
     const formTitle = document.getElementById('form-title');
     const usernameGroup = document.getElementById('username-group');
     const submitBtn = document.getElementById('submit-btn');
@@ -14,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleLink = document.getElementById('toggle-link');
     const authForm = document.getElementById('auth-form');
     const errorMessage = document.getElementById('error-message');
-
-    // NEW: Get the terms elements
     const termsGroup = document.getElementById('terms-group');
     const agreeTermsCheckbox = document.getElementById('agree-terms');
 
@@ -24,29 +25,26 @@ document.addEventListener('DOMContentLoaded', () => {
             authForm.style.opacity = '0';
             authForm.style.transform = 'translateY(10px)';
         }
-
-        if (isSignInMode) { // SIGN IN MODE
+        if (isSignInMode) {
             formTitle.textContent = 'Sign In to Your Account';
             usernameGroup.style.display = 'none';
-            termsGroup.style.display = 'none'; // Hide terms for sign-in
+            termsGroup.style.display = 'none';
             submitBtn.textContent = 'Sign In';
-            submitBtn.disabled = false; // Sign in button is always enabled
+            submitBtn.disabled = false;
             toggleText.textContent = "Don't have an account?";
             toggleLink.textContent = 'Sign Up';
             toggleLink.setAttribute('data-mode', 'signup');
-        } else { // SIGN UP MODE
+        } else {
             formTitle.textContent = 'Create Your Account';
             usernameGroup.style.display = 'block';
-            termsGroup.style.display = 'flex'; // Show terms for sign-up
+            termsGroup.style.display = 'flex';
             submitBtn.textContent = 'Sign Up';
-            // Sign up button is disabled until terms are agreed
             submitBtn.disabled = !agreeTermsCheckbox.checked; 
             toggleText.textContent = 'Already have an account?';
             toggleLink.textContent = 'Sign In';
             toggleLink.setAttribute('data-mode', 'signin');
         }
         errorMessage.textContent = '';
-
         if (animate) {
             setTimeout(() => {
                 authForm.style.opacity = '1';
@@ -65,9 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setFormMode(currentModeIsSignIn, true);
     });
 
-    // NEW: Event listener for the terms checkbox
     agreeTermsCheckbox.addEventListener('change', () => {
-        // Only affect the button if it's in Sign Up mode
         if (!formTitle.textContent.startsWith('Sign In')) {
             submitBtn.disabled = !agreeTermsCheckbox.checked;
         }
@@ -76,16 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
     authForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         errorMessage.textContent = '';
-        
         const isSignInAttempt = formTitle.textContent.startsWith('Sign In');
-
-        // NEW: Check for terms agreement if signing up
         if (!isSignInAttempt && !agreeTermsCheckbox.checked) {
             errorMessage.style.color = 'var(--danger-color)';
             errorMessage.textContent = 'You must agree to the Privacy and Policy to sign up.';
-            return; // Stop submission
+            return;
         }
-
         submitBtn.disabled = true;
         submitBtn.textContent = 'Processing...';
         const endpoint = isSignInAttempt ? '/login' : '/register';
@@ -98,12 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`${API_URL}${endpoint}`, {
+            const response = await fetch(`${API_URL}${endpoint}`, { // Make sure API_URL includes '/api' if your backend routes do
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-            const data = await response.json();
+            const data = await response.json(); // This line will fail if response is HTML
             if (!response.ok) throw new Error(data.error || 'Something went wrong');
             
             if (isSignInAttempt) {
@@ -114,31 +106,31 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 errorMessage.style.color = 'var(--success-color)';
                 errorMessage.textContent = 'Registration successful! Please sign in.';
-                agreeTermsCheckbox.checked = false; // Reset checkbox
-                setFormMode(true, true); // Switch to sign-in mode
+                agreeTermsCheckbox.checked = false;
+                setFormMode(true, true);
             }
         } catch (error) {
             if (error.message.includes('already exists')) {
                 errorMessage.style.color = 'var(--danger-color)';
                 errorMessage.textContent = 'This email already exists. Please sign in instead.';
-                agreeTermsCheckbox.checked = false; // Reset checkbox
+                agreeTermsCheckbox.checked = false;
                 setFormMode(true, true); 
-            } else {
+            } else if (error instanceof SyntaxError && error.message.includes("Unexpected token '<'")) {
+                errorMessage.style.color = 'var(--danger-color)';
+                errorMessage.textContent = 'Error connecting to server. Please try again later.';
+                console.error("Full error trying to parse JSON:", error);
+            }
+             else {
                 errorMessage.style.color = 'var(--danger-color)';
                 errorMessage.textContent = error.message;
             }
         } finally {
-            // Re-enable button unless we successfully registered and switched forms
-            if (!(endpoint === '/register' && errorMessage.textContent.startsWith('Registration successful'))) {
-                 const isNowSignIn = formTitle.textContent.startsWith('Sign In');
-                 if (isNowSignIn) {
-                    submitBtn.disabled = false;
-                 } else {
-                    submitBtn.disabled = !agreeTermsCheckbox.checked;
-                 }
-            }
-            // Ensure correct button text after processing
             const isNowSignIn = formTitle.textContent.startsWith('Sign In');
+            if (isNowSignIn) {
+               submitBtn.disabled = false;
+            } else {
+               submitBtn.disabled = !agreeTermsCheckbox.checked;
+            }
             submitBtn.textContent = isNowSignIn ? 'Sign In' : 'Sign Up';
         }
     });
